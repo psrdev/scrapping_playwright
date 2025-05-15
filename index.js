@@ -1,0 +1,25 @@
+const {chromium} = require('playwright');
+const {axios} = require('axios');
+const config = require('./config/config.js');
+
+(async () => {
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto(config.site);
+  const data = await page.evaluate(()=>{
+     const visalist =  document.querySelector('#visa_list');
+     const visaItems =  visalist.querySelectorAll('.cover');
+     return Array.from(visaItems).map((item) => {
+        const title = item.querySelector('h3').innerText;
+        const tag = item.querySelector('span.title').innerText;
+        return { title,tag};
+      });
+  });
+  console.log(data);
+
+  // Navigate to the login page
+
+
+})();
