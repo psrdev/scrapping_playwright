@@ -45,12 +45,12 @@ const downloadImage = async (url, filename) => {
         };
     });
 
-    fs.writeFileSync(
-        path.join(__dirname, 'visa_transformed.json'),
-        JSON.stringify(transformedData, null, 2),
-        'utf-8'
-    );
-    console.log('Transformed visa.json written to visa_transformed.json');
+    // fs.writeFileSync(
+    //     path.join(__dirname, 'visa_transformed.json'),
+    //     JSON.stringify(transformedData, null, 2),
+    //     'utf-8'
+    // );
+    // console.log('Transformed visa.json written to visa_transformed.json');
 
 })();
 
